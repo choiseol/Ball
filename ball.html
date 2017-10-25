@@ -1,0 +1,49 @@
+//중력을 작용하게 하고 싶다.
+//공이 안없어지지고 그자리에 남아있으면 좋겠다.
+//튕기면 좋겠다.
+<idoctype html>
+<head>
+	<title>공떨어진다</title>
+	<style>
+		.ball{
+			width:50px; height:900px; 
+			/* background:url('Sun01.png'); */
+			/* background-size:100% auto; */
+			background-repeat:no-repeat;
+			animation: bMove 1s linear;
+		}
+
+		@keyframes bMove{
+			0%{ background-position: 0 0px; opacity:1;}
+			30%{opacity:1;}
+			60%{ opacity:1; }
+			100%{ background-position:0 800px;opacity:1;}
+		}
+	</style>
+</head>
+<body>
+	<script>
+	setInterval(attachBall,800);
+
+	function attachBall(){
+		var t = document.createElement("div");
+		t.setAttribute("class","ball"); 
+		t.style.position = "absolute"; 
+		t.style.background = "url('Sun0" + randomBH(1,5) + ".png') no-repeat";
+
+		t.style.backgroundSize = "100% auto";
+		t.style.top = randomBH(0,window.innerHeight*0.2) + "px";
+		t.style.left = randomBH(0,window.innerWidth) + "px";
+	
+		document.body.appendChild(t);		
+	}
+	
+
+
+	function randomBH(min, max) {
+  		min = Math.ceil(min);
+  		max = Math.floor(max);
+  		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+	</script>
+</body>
